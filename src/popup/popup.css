@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 12px;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #fefefe, #c2c0c0);
 }
 
 .header {
@@ -53,4 +54,27 @@ body {
 .slot3 {
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.slot-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slot-num {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.name {
+  flex: 1;
+}
+
+.slot-num {
+    font-family: 'Lobster', cursive;
+    color: green;
+    font-size: 20px;
+    -webkit-text-stroke: 0.1px black;
 }
