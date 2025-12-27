@@ -1,12 +1,12 @@
 :root {
-  --w: 320px;
+    --w: 320px;
 }
 
 body {
-  width: var(--w);
-  margin: 0;
-  padding: 12px;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    width: var(--w);
+    margin: 0;
+    padding: 12px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .header {
@@ -17,7 +17,7 @@ body {
 }
 
 .title {
-  -webkit-text-stroke: 0.3px black;
+    -webkit-text-stroke: 0.3px black;
 }
 
 .subtitle {
@@ -29,13 +29,28 @@ body {
 }
 
 .slots {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .row {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.slot1 {
+
+    margin-bottom: 2rem;
+}
+
+.slot2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.slot3 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
