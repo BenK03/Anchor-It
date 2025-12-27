@@ -12,3 +12,9 @@ body {
 .header {
     font-family: 'Lobster', cursive;
 }
+
+.subtitle {
+    font-family: 'Amatic SC', sans-serif;
+    font-size: large;
+}
+
