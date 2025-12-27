@@ -8,6 +8,8 @@ body {
     padding: 12px;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     background: linear-gradient(135deg, #fefefe, #c2c0c0);
+    border: 5px solid rgb(196, 252, 196);
+    box-sizing: border-box;
 }
 
 .header {
@@ -18,12 +20,13 @@ body {
 }
 
 .title {
+    margin-top: px;
     -webkit-text-stroke: 0.3px black;
 }
 
-.subtitle {
+.instructions {
     font-family: 'Amatic SC', sans-serif;
-    padding-bottom: 20px;
+    padding-bottom: 13px;
     font-size: large;
     font-size: 22px;
     -webkit-text-stroke: 0.2px black;
@@ -42,19 +45,14 @@ body {
 }
 
 .slot1 {
-
     margin-bottom: 2rem;
 }
 
-.slot2 {
+.slot2, .slot3 {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.slot3 {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
 
 .slot-head {
   display: flex;
@@ -76,4 +74,21 @@ body {
     font-family: 'Amatic SC', sans-serif;
     color: green;
     font-size: 28px;
+}
+
+.name {
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.go, .clear, .save {
+    border: 2px solid green;
+    border-radius: 5px;
+    font-family: 'Lobster', cursive;
+    color: green;
+    -webkit-text-stroke: 0.5px black;
+}
+
+.go:hover, .clear:hover, .save:hover {
+    background-color: rgb(170, 244, 170);
 }
