@@ -1,0 +1,14 @@
+:root {
+  --w: 320px;
+}
+
+body {
+  width: var(--w);
+  margin: 0;
+  padding: 12px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.header {
+    font-family: 'Lobster', cursive;
+}
