@@ -73,8 +73,7 @@ body {
 }
 
 .slot-num {
-    font-family: 'Lobster', cursive;
+    font-family: 'Amatic SC', sans-serif;
     color: green;
-    font-size: 20px;
-    -webkit-text-stroke: 0.1px black;
+    font-size: 28px;
 }
