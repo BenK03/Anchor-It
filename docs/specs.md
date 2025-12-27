@@ -39,15 +39,15 @@ These requirements define the technical standards and constraints for the extens
 - Logic shall be clearly separated between popup scripts, content scripts, and background scripts.
 
 ### 3. High-Level Implementation Plan
-	1.	Project Setup
-Create the Chrome extension folder structure and configure manifest.json.
-	2.	Popup UI
-Implement a popup interface displaying up to three scroll spot slots with name input and action buttons.
-	3.	Content Script
-Implement logic to capture the current scroll position and scroll back to a saved position.
-	4.	Storage Layer
-Store and retrieve scroll spot data using chrome.storage.local, keyed by webpage URL.
-	5.	Messaging System
-Implement message passing between the popup script and content script to trigger save and scroll actions.
-	6.	Polish & Documentation
-Finalize UI styling, test edge cases, and complete README documentation.
+1.	Project Setup
+- Create the Chrome extension folder structure and configure manifest.json.
+2.	Popup UI
+- Implement a popup interface displaying up to three scroll spot slots with name input and action buttons.
+3.	Content Script
+- Implement logic to capture the current scroll position and scroll back to a saved position.
+4.	Storage Layer
+- Store and retrieve scroll spot data using chrome.storage.local, keyed by webpage URL.
+5.	Messaging System
+- Implement message passing between the popup script and content script to trigger save and scroll actions.
+6.	Polish & Documentation
+- Finalize UI styling, test edge cases, and complete README documentation.
