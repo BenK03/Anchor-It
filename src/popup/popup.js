@@ -53,13 +53,20 @@ function wireSlot(section, slotNumber) {
     }
 
     // name the input variables
-    var input = section.querySelector("input.name");
-    var saveBtn = section.querySelector("button.save");
-    var goBtn = section.querySelector("button.go");
-    var clearBtn = section.querySelector("button.clear");
+    var editWrap = section.querySelector(".slot-edit");
+    var savedWrap = section.querySelector(".slot-saved");
+
+    var input = editWrap ? editWrap.querySelector("input.name") : null;
+    var saveBtn = editWrap ? editWrap.querySelector("button.save") : null;
+    var goBtn = editWrap ? editWrap.querySelector("button.go") : null;
+    var clearBtn = editWrap ? editWrap.querySelector("button.clear") : null;
+
+    var savedNameEl = savedWrap ? savedWrap.querySelector(".saved-name") : null;
+    var savedGoBtn = savedWrap ? savedWrap.querySelector("button.go") : null;
+    var savedClearBtn = savedWrap ? savedWrap.querySelector("button.clear") : null;
 
     // make sure all data is there
-    if (!input || !saveBtn || !goBtn || !clearBtn) {
+    if (!editWrap || !savedWrap || !input || !saveBtn || !goBtn || !clearBtn || !savedNameEl || !savedGoBtn || !savedClearBtn) {
         return;
     }
 
