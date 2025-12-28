@@ -90,7 +90,7 @@ function wireSlot(section, slotNumber) {
         );
     });
 
-    // when Go button is clicked add type to the obj
+    // when Go button is clicked add type to the obj (edit UI)
     goBtn.addEventListener("click", function () {
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
@@ -100,6 +100,7 @@ function wireSlot(section, slotNumber) {
         });
     });
 
+    // when Go button is clicked add type to the obj (saved UI)
     savedGoBtn.addEventListener("click", function () {
         sendMessageToActiveTab({
             type: "go",
@@ -107,21 +108,28 @@ function wireSlot(section, slotNumber) {
         });
     });
 
-    // when Delete button is clicked add type to the obj
+    // when Delete button is clicked add type to the obj (edit UI)
     clearBtn.addEventListener("click", function () {
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
-        sendMessageToActiveTab({
-            type: "clear",
-            slot: slotNumber
-        });
+        sendMessageToActiveTab(
+            { type: "clear", slot: slotNumber },
+
+            // when chrome is done run refreshUI()
+            function () {
+                refreshUI();
+            }
+        );
     });
 
+    // when Delete button is clicked add type to object (saved UI)
     savedClearBtn.addEventListener("click", function () {
-        sendMessageToActiveTab({
-            type: "clear",
-            slot: slotNumber
-        });
+        sendMessageToActiveTab(
+            { type: "clear", slot: slotNumber },
+            function () {
+                refreshUI();
+            }
+        );
     });
 }
 
