@@ -44,6 +44,11 @@ function renderSlot(section, slotNumber, pageData) {
     var input = editWrap.querySelector("input.name");
     var savedNameEl = savedWrap.querySelector(".saved-name");
 
+    // error check
+    if (!input || !savedNameEl) {
+        return;
+    }
+
     var slotKey = String(slotNumber);
     var slotData = pageData && pageData[slotKey] ? pageData[slotKey] : null;
 
@@ -75,12 +80,11 @@ function wireSlot(section, slotNumber) {
     var goBtn = editWrap ? editWrap.querySelector("button.go") : null;
     var clearBtn = editWrap ? editWrap.querySelector("button.clear") : null;
 
-    var savedNameEl = savedWrap ? savedWrap.querySelector(".saved-name") : null;
     var savedGoBtn = savedWrap ? savedWrap.querySelector("button.go") : null;
     var savedClearBtn = savedWrap ? savedWrap.querySelector("button.clear") : null;
 
     // make sure all data is there
-    if (!editWrap || !savedWrap || !input || !saveBtn || !goBtn || !clearBtn || !savedNameEl || !savedGoBtn || !savedClearBtn) {
+    if (!editWrap || !savedWrap || !input || !saveBtn || !goBtn || !clearBtn || !savedGoBtn || !savedClearBtn) {
         return;
     }
 
