@@ -40,7 +40,7 @@ function getCurrentScrollPosition() {
 
 // PIN FUNCTION
 // Saves the users Pin
-function savePin(slotNumber, name) {
+function savePin(slotNumber, name, callback) {
     var pageKey = getPageKey(); // get URL
 
     // read existing data for the URL e.g., existing pins
@@ -88,3 +88,16 @@ function goPin(slotNumber) {
 }
 
 // DELETE FUNCTION
+function clearPin(slotNumber, callback) {
+    var pageKey = getPageKey();
+
+    readPageData(pageKey, function (pageData) {
+        delete pageData[String(slotNumber)];
+
+        writePageData(pageKey, pageData, function () {
+        if (callback) {
+            callback(pageData);
+        }
+        });
+    });
+}
