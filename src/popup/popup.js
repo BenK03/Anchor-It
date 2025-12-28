@@ -34,7 +34,8 @@ function wireSlot(section, slotNumber) {
     saveBtn.addEventListener("click", function () {
         var name = input.value.trim();
 
-        sendMessageToActiveTab({ // sends object to content script to activate corresponding function
+        // sends object to chrome then chrome sends to content script to activate corresponding function
+        sendMessageToActiveTab({
         type: "save",
         slot: slotNumber,
         name: name
@@ -43,7 +44,9 @@ function wireSlot(section, slotNumber) {
 
     // when Go button is clicked add type to the obj
     goBtn.addEventListener("click", function () {
-        sendMessageToActiveTab({ // sends object to content script to activate corresponding function
+
+        // sends object to chrome then chrome sends to content script to activate corresponding function
+        sendMessageToActiveTab({
         type: "go",
         slot: slotNumber
         });
@@ -51,7 +54,9 @@ function wireSlot(section, slotNumber) {
 
     // when Delete button is clicked add type to the obj
     clearBtn.addEventListener("click", function () {
-        sendMessageToActiveTab({ // sends object to content script to activate corresponding function
+
+        // sends object to chrome then chrome sends to content script to activate corresponding function
+        sendMessageToActiveTab({
         type: "clear",
         slot: slotNumber
         });

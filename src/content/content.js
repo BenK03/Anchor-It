@@ -101,3 +101,32 @@ function clearPin(slotNumber, callback) {
         });
     });
 }
+
+// Listener that receives information of the object from chrome but originally from wireSlot in popup.js
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+
+    // if type save run savePin function in content.js
+    if (message.type === "save") {
+        savePin(message.slot, message.name, function () {
+        sendResponse({ ok: true });
+        });
+        return true;
+    }
+
+    // if type go run goPin function in content.js
+    if (message.type === "go") {
+        goPin(message.slot);
+        sendResponse({ ok: true });
+        return;
+    }
+
+    // if type clear run clearPin function in content.js
+    if (message.type === "clear") {
+        clearPin(message.slot, function () {
+        sendResponse({ ok: true });
+        });
+        return true;
+    }
+
+    sendResponse({ ok: false, error: "unknown message type" });
+});
