@@ -1,0 +1,58 @@
+// Runs when popup opens
+document.addEventListener("DOMContentLoaded", function () {
+  // Grab the 3 slot sections by class
+  var slot1 = document.querySelector(".slot1");
+  var slot2 = document.querySelector(".slot2");
+  var slot3 = document.querySelector(".slot3");
+
+  // Wire each slot (slotNumber must be 1, 2, 3)
+  wireSlot(slot1, 1);
+  wireSlot(slot2, 2);
+  wireSlot(slot3, 3);
+});
+
+function wireSlot(section, slotNumber) {
+
+    // DOM missing so do nothing
+    if (!section) {
+        return;
+    }
+
+    // name the input variables
+    var input = section.querySelector("input.name");
+    var saveBtn = section.querySelector("button.save");
+    var goBtn = section.querySelector("button.go");
+    var clearBtn = section.querySelector("button.clear");
+
+    // make sure all data is there
+    if (!input || !saveBtn || !goBtn || !clearBtn) {
+        return;
+    }
+
+    // when Pin button is clicked add name and type to the obj
+    saveBtn.addEventListener("click", function () {
+        var name = input.value.trim();
+
+        sendMessageToActiveTab({ // sends object to content script to activate corresponding function
+        type: "save",
+        slot: slotNumber,
+        name: name
+        });
+    });
+
+    // when Go button is clicked add type to the obj
+    goBtn.addEventListener("click", function () {
+        sendMessageToActiveTab({ // sends object to content script to activate corresponding function
+        type: "go",
+        slot: slotNumber
+        });
+    });
+
+    // when Delete button is clicked add type to the obj
+    clearBtn.addEventListener("click", function () {
+        sendMessageToActiveTab({ // sends object to content script to activate corresponding function
+        type: "clear",
+        slot: slotNumber
+        });
+    });
+}
