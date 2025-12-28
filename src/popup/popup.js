@@ -1,15 +1,48 @@
 // Runs when popup opens
 document.addEventListener("DOMContentLoaded", function () {
-  // Grab the 3 slot sections by class
-  var slot1 = document.querySelector(".slot1");
-  var slot2 = document.querySelector(".slot2");
-  var slot3 = document.querySelector(".slot3");
+    // Grab the 3 slot sections by class
+    var slot1 = document.querySelector(".slot1");
+    var slot2 = document.querySelector(".slot2");
+    var slot3 = document.querySelector(".slot3");
 
-  // Wire each slot to a event listener
-  wireSlot(slot1, 1); 
-  wireSlot(slot2, 2);
-  wireSlot(slot3, 3);
+    // Wire each slot to a event listener
+    wireSlot(slot1, 1); 
+    wireSlot(slot2, 2);
+    wireSlot(slot3, 3);
+
+    // if saved slot data already exists get the data andcall applySlotState
+    sendMessageToActiveTab({ type: "get_state" }, function (response) {
+    if (!response || response.ok !== true) {
+        return;
+    }
+
+    var pageData = response.pageData || {};
+
+    applySlotState(slot1, 1, pageData);
+    applySlotState(slot2, 2, pageData);
+    applySlotState(slot3, 3, pageData);
+    });
 });
+
+// Display existing anchors
+function applySlotState(section, slotNumber, pageData) {
+    var input = section.querySelector("input.name");
+    var goBtn = section.querySelector("button.go");
+    var clearBtn = section.querySelector("button.clear");
+
+    var slotKey = String(slotNumber);
+    var slotData = pageData[slotKey];
+
+    if (slotData) {
+        input.value = slotData.name || "";
+        goBtn.disabled = false;
+        clearBtn.disabled = false;
+    } else {
+        input.value = "";
+        goBtn.disabled = true;
+        clearBtn.disabled = true;
+    }
+}
 
 // wires each slot to an event listener
 function wireSlot(section, slotNumber) {
