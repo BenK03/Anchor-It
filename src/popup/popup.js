@@ -77,10 +77,23 @@ function wireSlot(section, slotNumber) {
         var name = input.value.trim();
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
-        sendMessageToActiveTab({
-            type: "save",
-            slot: slotNumber,
-            name: name
+    sendMessageToActiveTab(
+    {
+        type: "save",
+        slot: slotNumber,
+        name: name
+    },
+    function () {
+        sendMessageToActiveTab({ type: "get_state" }, function (response) {
+            if (!response || response.ok !== true) {
+                return;
+            }
+
+            var pageData = response.pageData || {};
+
+            renderSlot(window.slot1, 1, pageData);
+            renderSlot(window.slot2, 2, pageData);
+            renderSlot(window.slot3, 3, pageData);
         });
     });
 
