@@ -64,14 +64,22 @@ function wireSlot(section, slotNumber) {
 }
 
 // (Helper) get the current active tab then send the message to chrome which then sends it to content.js
-function sendMessageToActiveTab(message) {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var tab = tabs[0];
+function sendMessageToActiveTab(message, callback) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        var tab = tabs[0];
 
-    if (!tab || !tab.id) {
-      return;
-    }
+        if (!tab || !tab.id) {
+        return;
+        }
 
-    chrome.tabs.sendMessage(tab.id, message);
-  });
+        chrome.tabs.sendMessage(tab.id, message, function (response) {
+        if (chrome.runtime.lastError) {
+            return;
+        }
+
+        if (callback) {
+            callback(response);
+        }
+        });
+    });
 }

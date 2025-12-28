@@ -105,6 +105,17 @@ function clearPin(slotNumber, callback) {
 // Listener that receives information of the object from chrome but originally from wireSlot in popup.js
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
+    // listens for messages from the popup and either returns saved data or performs page actions
+    if (message.type === "get_state") {
+        var pageKey = getPageKey();
+
+        readPageData(pageKey, function (pageData) {
+            sendResponse({ ok: true, pageData: pageData });
+        });
+
+        return true;
+    }
+
     // if type save run savePin function in content.js
     if (message.type === "save") {
         savePin(message.slot, message.name, function () {
