@@ -1,26 +1,3 @@
-// decides which UI to show for each slot
-function renderSlot(section, slotNumber, pageData) {
-    var editWrap = section.querySelector(".slot-edit");
-    var savedWrap = section.querySelector(".slot-saved");
-
-    var input = editWrap.querySelector("input.name");
-    var savedNameEl = savedWrap.querySelector(".saved-name");
-
-    var slotKey = String(slotNumber);
-    var slotData = pageData && pageData[slotKey] ? pageData[slotKey] : null;
-
-    if (slotData) {
-        savedNameEl.textContent = slotData.name || "";
-        savedWrap.style.display = "block";
-        editWrap.style.display = "none";
-    } else {
-        input.value = "";
-        savedWrap.style.display = "none";
-        editWrap.style.display = "block";
-    }
-}
-
-
 // Runs when popup opens
 document.addEventListener("DOMContentLoaded", function () {
     // Grab the 3 slot sections by class
@@ -46,6 +23,28 @@ document.addEventListener("DOMContentLoaded", function () {
         renderSlot(slot3, 3, pageData);
     });
 });
+
+// decides which UI to show for each slot
+function renderSlot(section, slotNumber, pageData) {
+    var editWrap = section.querySelector(".slot-edit");
+    var savedWrap = section.querySelector(".slot-saved");
+
+    var input = editWrap.querySelector("input.name");
+    var savedNameEl = savedWrap.querySelector(".saved-name");
+
+    var slotKey = String(slotNumber);
+    var slotData = pageData && pageData[slotKey] ? pageData[slotKey] : null;
+
+    if (slotData) {
+        savedNameEl.textContent = slotData.name || "";
+        savedWrap.style.display = "block";
+        editWrap.style.display = "none";
+    } else {
+        input.value = "";
+        savedWrap.style.display = "none";
+        editWrap.style.display = "block";
+    }
+}
 
 // wires each slot to an event listener
 function wireSlot(section, slotNumber) {
