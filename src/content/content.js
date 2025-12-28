@@ -1,3 +1,4 @@
+// HELPER FUNCTIONS
 // Finds which page the user is on
 function getPageKey() {
   const u = new URL(window.location.href);
@@ -37,7 +38,7 @@ function getCurrentScrollPosition() {
     return window.scrollY;
 }
 
-// Above are all helper functions for this function
+// PIN FUNCTION
 // Saves the users Pin
 function savePin(slotNumber, name) {
     var pageKey = getPageKey(); // get URL
@@ -62,3 +63,28 @@ function savePin(slotNumber, name) {
         });
     });
 }
+
+// GO FUNCTION
+// scroll to saved anchor
+function goPin(slotNumber) {
+    var pageKey = getPageKey(); // get URL 
+
+    readPageData(pageKey, function (pageData) {
+        var slotKey = String(slotNumber);
+        var slotData = pageData[slotKey];
+
+        if (slotData === undefined) { // if anchor doesn't exist, return
+        return;
+        }
+
+        // if anchor exists go to the saved position
+        var y = slotData.y;
+
+        window.scrollTo({
+        top: y,
+        behavior: "smooth"
+        });
+    });
+}
+
+// DELETE FUNCTION
