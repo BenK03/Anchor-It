@@ -1,16 +1,16 @@
 // Runs when popup opens
 document.addEventListener("DOMContentLoaded", function () {
     // Grab the 3 slot sections by class
-    var slot1 = document.querySelector(".slot1");
-    var slot2 = document.querySelector(".slot2");
-    var slot3 = document.querySelector(".slot3");
+    window.slot1 = document.querySelector(".slot1");
+    window.slot2 = document.querySelector(".slot2");
+    window.slot3 = document.querySelector(".slot3");
 
     // Wire each slot to a event listener
-    wireSlot(slot1, 1); 
-    wireSlot(slot2, 2);
-    wireSlot(slot3, 3);
+    wireSlot(window.slot1, 1); 
+    wireSlot(window.slot2, 2);
+    wireSlot(window.slot3, 3);
 
-    // if saved slot data already exists get the data andcall applySlotState
+    // if saved slot data already exists get the data and call renderSlot
     sendMessageToActiveTab({ type: "get_state" }, function (response) {
         if (!response || response.ok !== true) {
             return;
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var pageData = response.pageData || {};
 
-        renderSlot(slot1, 1, pageData);
-        renderSlot(slot2, 2, pageData);
-        renderSlot(slot3, 3, pageData);
+        renderSlot(window.slot1, 1, pageData);
+        renderSlot(window.slot2, 2, pageData);
+        renderSlot(window.slot3, 3, pageData);
     });
 });
 
