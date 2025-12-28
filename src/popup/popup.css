@@ -92,3 +92,13 @@ body {
 .go:hover, .clear:hover, .save:hover {
     background-color: rgb(170, 244, 170);
 }
+
+.saved-name, .saved-icon {
+    font-family: 'Amatic SC', sans-serif;
+    color: green;
+    font-size: 30px;
+}
+
+.saved-name {
+    margin-right: 10px;
+}
