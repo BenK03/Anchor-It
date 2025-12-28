@@ -29,8 +29,17 @@ function refreshUI() {
 
 // decides which UI to show for each slot
 function renderSlot(section, slotNumber, pageData) {
+    // error check
+    if (!section) {
+        return;
+    }
     var editWrap = section.querySelector(".slot-edit");
     var savedWrap = section.querySelector(".slot-saved");
+
+    // error check
+    if (!editWrap || !savedWrap) {
+        return;
+    }
 
     var input = editWrap.querySelector("input.name");
     var savedNameEl = savedWrap.querySelector(".saved-name");
@@ -78,6 +87,12 @@ function wireSlot(section, slotNumber) {
     // when Pin button is clicked add name and type to the obj
     saveBtn.addEventListener("click", function () {
         var name = input.value.trim();
+
+        // check if name is empty
+        if (name === "") {
+            alert("Anchor name cannot be empty");
+            return;
+        }
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
         sendMessageToActiveTab(
