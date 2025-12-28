@@ -76,9 +76,9 @@ function wireSlot(section, slotNumber) {
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
         sendMessageToActiveTab({
-        type: "save",
-        slot: slotNumber,
-        name: name
+            type: "save",
+            slot: slotNumber,
+            name: name
         });
     });
 
@@ -87,8 +87,15 @@ function wireSlot(section, slotNumber) {
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
         sendMessageToActiveTab({
-        type: "go",
-        slot: slotNumber
+            type: "go",
+            slot: slotNumber
+        });
+    });
+
+    savedGoBtn.addEventListener("click", function () {
+        sendMessageToActiveTab({
+            type: "go",
+            slot: slotNumber
         });
     });
 
@@ -97,8 +104,15 @@ function wireSlot(section, slotNumber) {
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
         sendMessageToActiveTab({
-        type: "clear",
-        slot: slotNumber
+            type: "clear",
+            slot: slotNumber
+        });
+    });
+
+    savedClearBtn.addEventListener("click", function () {
+        sendMessageToActiveTab({
+            type: "clear",
+            slot: slotNumber
         });
     });
 }
