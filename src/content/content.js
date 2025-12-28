@@ -1,27 +1,24 @@
-// Check URL
+// Finds which page the user is on
 function getPageKey() {
   const u = new URL(window.location.href);
   return u.origin + u.pathname + u.search;
 }
 
-// Storage helper
+// Read saved page data from the chrome storage
 function readPageData(pageKey, callback) {
-  chrome.storage.local.get(pageKey, function (result) {
-    var storedValue = result[pageKey];
 
-    if (storedValue === undefined) {
-      callback({});
-    } else {
-      callback(storedValue);
-    }
-  });
 }
-// Storage helper
-function writePageData(pageKey, data, callback) {
-  var objToSave = {};
-  objToSave[pageKey] = data;
 
-  chrome.storage.local.set(objToSave, function () {
-    callback();
-  });
+// Saves updated pin data to chrome storage
+function writePageData(pageKey, Data, callback) {
+
+}
+
+// get current scroll position (returns vertical scroll position)
+function getCurrentScrollPosition() {
+
+}
+
+function savePin(slotNumber, name) {
+
 }
