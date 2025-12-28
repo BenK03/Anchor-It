@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var slot2 = document.querySelector(".slot2");
   var slot3 = document.querySelector(".slot3");
 
-  // Wire each slot (slotNumber must be 1, 2, 3)
-  wireSlot(slot1, 1);
+  // Wire each slot to a event listener
+  wireSlot(slot1, 1); 
   wireSlot(slot2, 2);
   wireSlot(slot3, 3);
 });
 
+// wires each slot to an event listener
 function wireSlot(section, slotNumber) {
 
     // DOM missing so do nothing
