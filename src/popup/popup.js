@@ -9,8 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     wireSlot(window.slot1, 1); 
     wireSlot(window.slot2, 2);
     wireSlot(window.slot3, 3);
+    refreshUI();
+});
 
-    // if saved slot data already exists get the data and call renderSlot
+// if there is existing anchors show them
+function refreshUI() {
     sendMessageToActiveTab({ type: "get_state" }, function (response) {
         if (!response || response.ok !== true) {
             return;
@@ -22,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderSlot(window.slot2, 2, pageData);
         renderSlot(window.slot3, 3, pageData);
     });
-});
+}
 
 // decides which UI to show for each slot
 function renderSlot(section, slotNumber, pageData) {
@@ -77,24 +80,14 @@ function wireSlot(section, slotNumber) {
         var name = input.value.trim();
 
         // sends object to chrome then chrome sends to content script to activate corresponding function
-    sendMessageToActiveTab(
-    {
-        type: "save",
-        slot: slotNumber,
-        name: name
-    },
-    function () {
-        sendMessageToActiveTab({ type: "get_state" }, function (response) {
-            if (!response || response.ok !== true) {
-                return;
+        sendMessageToActiveTab(
+            { type: "save", slot: slotNumber, name: name },
+
+            // when chrome is done run refreshUI()
+            function () {
+                refreshUI();
             }
-
-            var pageData = response.pageData || {};
-
-            renderSlot(window.slot1, 1, pageData);
-            renderSlot(window.slot2, 2, pageData);
-            renderSlot(window.slot3, 3, pageData);
-        });
+        );
     });
 
     // when Go button is clicked add type to the obj
