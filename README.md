@@ -18,8 +18,8 @@ Anchor It lets you save up to 3 scroll positions on any webpage and jump back to
 - Popup UI with message passing (HTML, CSS, JavaScript)
 - chrome.storage.local for persistence
 
-## 📝 Demo Instructions
-- TODO: Chrome extension under review (will add link once approved)
+## 📝 Download Instructions
+- **Chrome Web Store:** [Click to Install](https://chromewebstore.google.com/detail/anchor-it/lpjnpdohgohamphbinaeecfaacacdghn)
 
 ## 🧑‍🔧 How to Use
 1. Open any standard webpage and scroll
